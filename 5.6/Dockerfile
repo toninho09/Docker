@@ -4,7 +4,7 @@ FROM debian
 MAINTAINER Antonio <antoniohls@gmail.com>
 
 RUN apt-get update \
-&& apt-get -y install git curl apache2 php5 php5-mysql php5-mcrypt php5-json php5-curl php5-odbc php5-gd php5-sqlite3 php5-sybase tdsodbc \
+&& apt-get -y install git curl apache2 php5 php5-mysql php5-mcrypt php5-json php5-curl php5-odbc php5-gd php5-sqlite php5-sybase tdsodbc \
 && apt-get -y autoremove \
 && apt-get clean \
 && rm -rf /var/lib/apt/lists/* \
