@@ -4,12 +4,13 @@ FROM debian
 MAINTAINER Antonio <antoniohls@gmail.com>
 
 RUN apt-get update \
-&& apt-get -y install git curl apache2 php5 php5-mysql php5-mcrypt php5-json php5-curl php5-odbc php5-sybase tdsodbc \
+&& apt-get -y install git curl apache2 php5 php5-mysql php5-mcrypt php5-json php5-curl php5-odbc php5-sybase php5-gd php5-sqlite3 tdsodbc php5-xdebug \
 && apt-get -y autoremove \
 && apt-get clean \
 && rm -rf /var/lib/apt/lists/* \
 && /usr/sbin/a2dismod 'mpm_*' && /usr/sbin/a2enmod mpm_prefork \
 && /usr/sbin/a2enmod rewrite \
+&& /usr/sbin/a2enmod mime \
 && /usr/sbin/a2dissite '*'
 
 ADD 000-laravel.conf /etc/apache2/sites-available/
@@ -26,7 +27,5 @@ ENV APACHE_LOG_DIR /var/log/apache2
 
 EXPOSE 80
 EXPOSE 443
-
-VOLUME ["/var/www/laravel"]
 
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
