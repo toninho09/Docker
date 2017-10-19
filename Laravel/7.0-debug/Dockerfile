@@ -21,6 +21,8 @@ RUN /usr/sbin/a2ensite 000-laravel 001-laravel-ssl \
 && /usr/bin/curl -sS https://getcomposer.org/installer |/usr/bin/php \
 && /bin/mv composer.phar /usr/local/bin/composer
 
+COPY 20-xdebug.ini /etc/php/7.0/cli/conf.d/20-xdebug.ini
+
 ENV APACHE_RUN_USER www-data
 ENV APACHE_RUN_GROUP www-data
 ENV APACHE_LOG_DIR /var/log/apache2
