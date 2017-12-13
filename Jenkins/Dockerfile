@@ -1,5 +1,5 @@
 # usage
-# docker run -d -v /you/laravel/folder:/var/www/laravel -p 80:80 -p 443:443 toninho09/apache-laravel
+# docker run -v /var/run/docker.sock:/var/run/docker.sock -p 5000:5000 -p 8080:8080 --privileged toninho09/jenkins-with-docker
 FROM jenkins/jenkins
 MAINTAINER Antonio <antoniohls@gmail.com>
 
