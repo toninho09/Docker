@@ -1,0 +1,31 @@
+version: "2"
+
+services:
+  sonarqube:
+    image: sonarqube
+    ports:
+      - "9010:9000"
+    networks:
+      - sonarnet
+    environment:
+      - SONARQUBE_JDBC_URL=jdbc:postgresql://db:5432/sonar
+    volumes:
+      - /home/antonio/conainer/sonarqube/conf:/opt/sonarqube/conf
+      - /home/antonio/conainer/sonarqube/data:/opt/sonarqube/data
+      - /home/antonio/conainer/sonarqube/extensions:/opt/sonarqube/extensions
+      - /home/antonio/conainer/sonarqube/bundled:/opt/sonarqube/lib/bundled-plugins
+
+  db:
+    image: postgres
+    networks:
+      - sonarnet
+    environment:
+      - POSTGRES_USER=sonar
+      - POSTGRES_PASSWORD=sonar
+    volumes:
+      - /home/antonio/conainer/sonarqube/postgresql:/var/lib/postgresql
+      - /home/antonio/conainer/sonarqube/postgresqlData:/var/lib/postgresql/data
+
+networks:
+  sonarnet:
+    driver: bridge
