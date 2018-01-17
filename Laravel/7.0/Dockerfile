@@ -1,6 +1,6 @@
 # usage
 # docker run -d -v /you/laravel/folder:/var/www/laravel -p 80:80 -p 443:443 toninho09/apache-laravel
-FROM ubuntu:17.04
+FROM ubuntu:18.04
 MAINTAINER Antonio <antoniohls@gmail.com>
 
 RUN apt-get update \
