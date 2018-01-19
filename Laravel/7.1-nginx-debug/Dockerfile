@@ -1,13 +1,13 @@
 # usage
 # docker run -d -v /you/laravel/folder:/var/www/laravel -p 80:80 -p 443:443 toninho09/apache-laravel
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 MAINTAINER Antonio <antoniohls@gmail.com>
 
 COPY endpoint.sh /endpoint.sh
 
 RUN apt-get update \
-&& apt-get -y install git curl nginx php7.0-fpm php7.0-mysql php7.0-curl php7.0-gd php7.0-intl php-pear php-imagick php7.0-imap php7.0-mcrypt php-memcache php-pgsql \
-php7.0-pspell php7.0-recode php7.0-sqlite3 php7.0-tidy php7.0-xmlrpc php7.0-xsl php7.0-mbstring php-gettext php7.0-odbc php7.0-sybase php7.0-xml php7.0-json php7.0-zip tdsodbc \
+&& apt-get -y install git curl nginx php-fpm php-mysql php-curl php-gd php-intl php-pear php-imagick php-imap php-mcrypt php-memcache php-pgsql \
+php-pspell php-recode php-sqlite3 php-tidy php-xmlrpc php-xsl php-mbstring php-gettext php-odbc php-sybase php-xml php-json php-zip php-xdebug tdsodbc \
 && apt-get -y autoremove \
 && apt-get clean \
 && rm -rf /var/lib/apt/lists/* \
@@ -23,6 +23,8 @@ ADD 000-laravel.conf /etc/nginx/sites-available/
 COPY freetds.conf /etc/freetds/freetds.conf
 
 RUN ln -s /etc/nginx/sites-available/000-laravel.conf /etc/nginx/sites-enabled/000-laravel.conf
+
+COPY 20-xdebug.ini /etc/php/7.1/cli/conf.d/20-xdebug.ini
 
 WORKDIR /
 

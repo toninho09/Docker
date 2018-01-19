@@ -1,14 +1,13 @@
 # usage
 # docker run -d -v /you/laravel/folder:/var/www/laravel -p 80:80 -p 443:443 toninho09/apache-laravel
-FROM ubuntu:17.04
+FROM ubuntu:16.04
 MAINTAINER Antonio <antoniohls@gmail.com>
 
 RUN apt-get update \
-&& apt-get -y install git curl apache2 php php-mysql php-mcrypt php-json php-curl php-gd php-odbc php-pgsql php-sybase tdsodbc php-xml php-sqlite3 php-xdebug\
+&& apt-get -y install git curl apache2 php php-mysql php-mcrypt php-json php-curl php-gd php-odbc php-pgsql php-sybase tdsodbc php-xml php-sqlite3 php-zip php-xdebug libapache2-mod-php\
 && apt-get -y autoremove \
 && apt-get clean \
 && rm -rf /var/lib/apt/lists/* \
-&& /usr/sbin/a2enmod mpm_prefork \
 && /usr/sbin/a2enmod rewrite \
 && /usr/sbin/a2enmod mime \
 && /usr/sbin/a2dissite '*'
