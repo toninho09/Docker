@@ -28,5 +28,6 @@ ENV APACHE_LOG_DIR /var/log/apache2
 
 EXPOSE 80
 EXPOSE 443
+WORKDIR /var/www/laravel
 
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
