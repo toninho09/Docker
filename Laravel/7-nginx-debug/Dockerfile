@@ -5,8 +5,10 @@ MAINTAINER Antonio <antoniohls@gmail.com>
 
 COPY endpoint.sh /endpoint.sh
 
-RUN apt-get update \
-&& apt-get -y install git curl nginx php-fpm php-mysql php-curl php-gd php-intl php-pear php-imagick php-imap php-mcrypt php-memcache php-pgsql \
+ENV TZ=America/Los_Angeles
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \ 
+&& apt-get update \
+&& apt-get -y install git curl nginx php-fpm php-soap php-mysql php-curl php-gd php-intl php-pear php-imagick php-imap php-memcache php-pgsql \
 php-pspell php-recode php-sqlite3 php-tidy php-xmlrpc php-xsl php-mbstring php-gettext php-odbc php-sybase php-xml php-json php-zip php-xdebug tdsodbc \
 && apt-get -y autoremove \
 && apt-get clean \
