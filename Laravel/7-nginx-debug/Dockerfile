@@ -17,7 +17,8 @@ php-pspell php-recode php-sqlite3 php-tidy php-xmlrpc php-xsl php-mbstring php-g
 && /usr/bin/curl -sS https://getcomposer.org/installer | /usr/bin/php \
 && /bin/mv composer.phar /usr/local/bin/composer \
 && chmod +x \endpoint.sh \
-&& rm /etc/nginx/sites-available/default
+&& rm /etc/nginx/sites-available/default \
+&& rm /etc/nginx/sites-enabled/default
 
 
 ADD 000-laravel.conf /etc/nginx/sites-available/
