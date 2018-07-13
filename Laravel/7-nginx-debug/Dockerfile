@@ -26,7 +26,7 @@ COPY freetds.conf /etc/freetds/freetds.conf
 
 RUN ln -s /etc/nginx/sites-available/000-laravel.conf /etc/nginx/sites-enabled/000-laravel.conf
 
-COPY 20-xdebug.ini /etc/php/7.1/cli/conf.d/20-xdebug.ini
+COPY 20-xdebug.ini /etc/php/7.2/cli/conf.d/20-xdebug.ini
 
 WORKDIR /
 
