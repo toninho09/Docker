@@ -4,7 +4,7 @@ FROM ubuntu:16.04
 MAINTAINER Antonio <antoniohls@gmail.com>
 
 RUN apt-get update \
-&& apt-get -y install git curl apache2 php php-soap php-mysql php-mcrypt php-json php-curl php-gd php-odbc php-pgsql php-sybase tdsodbc php-xml php-sqlite3 php-zip php-xdebug libapache2-mod-php php-mbstring\
+&& apt-get -y install zip git curl apache2 php php-soap php-mysql php-mcrypt php-json php-curl php-gd php-odbc php-pgsql php-sybase tdsodbc php-xml php-sqlite3 php-zip php-xdebug libapache2-mod-php php-mbstring\
 && apt-get -y autoremove \
 && apt-get clean \
 && rm -rf /var/lib/apt/lists/* \
